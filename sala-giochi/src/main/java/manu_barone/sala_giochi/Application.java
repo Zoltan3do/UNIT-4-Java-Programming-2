@@ -21,11 +21,15 @@ public class Application {
 					+ "2)Ricerca per id\n"
 					+ "3)Ricerca per prezzo\n"
 					+ "4)Ricerca per numero giocatori\n"
+					+ "5)Rimuovi gioco\n"
+					+ "6)Stampa giochi\n"
+					+ ""
 					+ "0)Esci");
 
 			int ris = Integer.parseInt(in.nextLine());
 
 			switch(ris) {
+			
 			case 1:
 				try {
 					System.out.println("Inserisci l'id");
@@ -82,12 +86,36 @@ public class Application {
 					System.out.println(e.getMessage());
 				}
 				break;
+				
 			case 3:
 				System.out.println("Inserisci prezzo da filtrare");
 				double pr = Double.parseDouble(in.nextLine());
 				List<Gioco> giochiTrovati = collezione.ricercaPerPrezzo(pr);
 				giochiTrovati.forEach(g -> System.out.println(g.getTitolo()));
 				break;
+				
+			case 4:
+				System.out.println("Inserisci numero di giocatori ");
+				int num = Integer.parseInt(in.nextLine());
+				List<GiocoDaTavolo> giochiDaTavoloTrovati = collezione.ricercaPerGiocatori(num);
+				giochiDaTavoloTrovati.forEach(g-> System.out.println(g.getTitolo()));
+				break;
+				
+			case 5:
+				try {
+					System.out.println("Inserisci id");
+					String id = in.nextLine();
+					collezione.rimuoviGioco(id);
+					System.out.println("Gioco rimovidossss");
+				}catch(Exception  e) {
+					System.out.println(e.getMessage());
+				}
+				break;
+				
+			case 6:
+				collezione.stampaLista();
+				break;
+
 			}
 		}
 	}
