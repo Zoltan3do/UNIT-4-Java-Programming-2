@@ -2,9 +2,6 @@ package entities;
 
 
 public class Videogioco extends Gioco {
-	enum GenereVideogioco {
-		AZIONE, AVVENTURA, RPG, SIMULAZIONE, STRATEGIA, SPORTIVO
-	}
 
 	private String piattaforma; 
 	private int durataDiGioco; 
